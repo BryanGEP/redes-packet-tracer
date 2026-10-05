@@ -1,0 +1,99 @@
+------------------------------------------------------------------------------------------------------
+126 hosts
+Router> enable (ena)
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 192.168.1.126 255.255.255.128
+Router(config-if)# no shutdown (no sh)
+Router(config-if)# exit
+Router(config)# exit
+
+62 hosts
+Router> enable
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 192.168.1.190 255.255.255.192
+Router(config-if)# no shutdown
+Router(config-if)# exit
+Router(config)# exit
+
+30 hosts
+Router> enable
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 192.168.1.222 255.255.255.224
+Router(config-if)# no shutdown
+Router(config-if)# exit
+Router(config)# exit
+
+
+show ip route
+
+ena
+conf t
+interface s0/0/0
+ip add [ip del rooter al que nos vamos a conectar] [mascara de subred de ese mismo roouter]
+no sh
+
+ena
+conf t
+do sh ip ro
+router eigrp 1
+network [rutas de C] [Mascara de subred]
+
+------------------------------------------------------------------------------------------------------
+CASO 2: 3millones,7mil,65 hosts     
+
+3 millones
+Router> enable (ena)
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 10.63.255.254 255.192.0.0
+Router(config-if)# no shutdown (no sh)
+Router(config-if)# exit
+Router(config)# exit
+
+7 mil
+Router> enable
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 10.64.31.254 255.255.224.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+Router(config)# exit
+
+65 
+Router> enable
+Router# configure terminal
+Router(config)# interface g0/0
+Router(config-if)# ip address 10.64.32.126 255.255.255.128
+Router(config-if)# no shutdown
+Router(config-if)# exit
+Router(config)# exit
+
+
+show ip route
+
+ena
+conf t
+interface s0/0/0
+ip add [ip del rooter al que nos vamos a conectar el enlace, ultimo host del enlace] [mascara de subred de ese mismo roouter] //primer host y ultimo, se implementan los dos host del enlace en cada 			       router por ejemplo A->10.64.32.129->B y B->10-64-32-130->A
+no sh
+
+ena
+conf t
+do sh ip ro
+router eigrp 1
+network [rutas de C] [Mascara de subred]
+
+LAPTOPS-------------
+se modifica la ip por una del rango
+se modifica la mascara de ese mismo rango de ips
+y se modifica el Gateway y se pone la ultima ip del rango valido de esa misma red
+
+CASO OSPF--------------------------------------------------------------------------------------------
+ena
+conf t
+do sh ip ro
+router ospf 1
+network [rutas de C] [Mascara de subred] AREA 0

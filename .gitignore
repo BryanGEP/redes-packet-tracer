@@ -1,0 +1,8 @@
+# Drivers descargables (no son trabajo propio)
+DRIVERS CABLE CONSOLA/
+DRIVERS CABLE CONSOLA.zip
+*.zip
+
+# Basura del sistema
+Thumbs.db
+.DS_Store
